@@ -16,7 +16,7 @@ const TEST_AMOUNT = expandTo18Decimals(10)
 
 describe('UniswapV2ERC20', () => {
   const provider = new MockProvider({
-    hardfork: 'istanbul',
+    hardfork: 'petersburg',
     mnemonic: 'horn horn horn horn horn horn horn horn horn horn horn horn',
     gasLimit: 9999999
   })
@@ -44,7 +44,7 @@ describe('UniswapV2ERC20', () => {
             ),
             keccak256(toUtf8Bytes(name)),
             keccak256(toUtf8Bytes('1')),
-            1,
+            8,
             token.address
           ]
         )

@@ -17,7 +17,7 @@ const overrides = {
 
 describe('UniswapV2Pair', () => {
   const provider = new MockProvider({
-    hardfork: 'istanbul',
+    hardfork: 'petersburg',
     mnemonic: 'horn horn horn horn horn horn horn horn horn horn horn horn',
     gasLimit: 9999999
   })
@@ -177,7 +177,8 @@ describe('UniswapV2Pair', () => {
     await mineBlock(provider, (await provider.getBlock('latest')).timestamp + 1)
     const tx = await pair.swap(expectedOutputAmount, 0, wallet.address, '0x', overrides)
     const receipt = await tx.wait()
-    expect(receipt.gasUsed).to.eq(73462)
+    // expect(receipt.gasUsed).to.eq(73462) // istanbul
+    expect(receipt.gasUsed).to.eq(76378) // petersburg
   })
 
   it('burn', async () => {

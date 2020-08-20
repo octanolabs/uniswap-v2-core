@@ -18,7 +18,7 @@ const TEST_ADDRESSES: [string, string] = [
 
 describe('UniswapV2Factory', () => {
   const provider = new MockProvider({
-    hardfork: 'istanbul',
+    hardfork: 'petersburg',
     mnemonic: 'horn horn horn horn horn horn horn horn horn horn horn horn',
     gasLimit: 9999999
   })
@@ -68,7 +68,8 @@ describe('UniswapV2Factory', () => {
   it('createPair:gas', async () => {
     const tx = await factory.createPair(...TEST_ADDRESSES)
     const receipt = await tx.wait()
-    expect(receipt.gasUsed).to.eq(2512920)
+    // expect(receipt.gasUsed).to.eq(2512920) // istanbul
+    expect(receipt.gasUsed).to.eq(2507248) // petersburg
   })
 
   it('setFeeTo', async () => {
